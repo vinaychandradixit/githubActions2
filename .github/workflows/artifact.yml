@@ -1,16 +1,14 @@
 name: artifactdownload
 on: push
 env: 
-    JOB_ENVIRONMENT_VARIABLE - ' custom workspace environment variable '
+    JOB_ENVIRONMENT_VARIABLE - myartifact
 jobs:
     job1:
+        runs-on: ubuntu-latest
         steps:
-          step1:
             - name: checkout
-              runs-on: ubuntu-latest
               uses: actions/checkout@v2
             - name: Upload
-              runs-on: ubuntu-latest
               uses: actions/upload-artifact@v2
               with:
                   name: {{ env.JOB_ENVIRONMENT_VARIABLE }}
