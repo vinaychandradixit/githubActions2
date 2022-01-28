@@ -1,0 +1,19 @@
+name: artifactdownload
+on: push
+env: 
+    JOB_ENVIRONMENT_VARIABLE - ' custom workspace environment variable '
+jobs:
+    job1:
+        steps:
+          step1:
+            - name: checkout
+              runs-on: ubuntu-latest
+              uses: actions/checkout@v2
+            - name: Upload
+              runs-on: ubuntu-latest
+              uses: actions/upload-artifact@v2
+              with:
+                  name: {{ env.JOB_ENVIRONMENT_VARIABLE }}
+                  path: .
+
+              
