@@ -1,9 +1,9 @@
 name: artifactdownload
 on: push
 env: 
-    JOB_ENVIRONMENT_VARIABLE - myartifact
+    ARTIFACT_NAME: myartifact
 jobs:
-    job1:
+    main:
         runs-on: ubuntu-latest
         steps:
             - name: checkout
@@ -11,7 +11,7 @@ jobs:
             - name: Upload
               uses: actions/upload-artifact@v2
               with:
-                  name: {{ env.JOB_ENVIRONMENT_VARIABLE }}
+                  name: ${{ env.ARTIFACT_NAME }}
                   path: .
 
               
