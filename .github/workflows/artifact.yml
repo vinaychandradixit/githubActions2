@@ -5,13 +5,12 @@ env:
 jobs:
     main:
         runs-on: ubuntu-latest
+        container:
+            image: node:14.16
+            volumes:
+            - "${{ github.workspace }} :/code"
         steps:
             - name: checkout
               uses: actions/checkout@v2
-            - name: Upload
-              uses: actions/upload-artifact@v2
-              with:
-                  name: ${{ env.ARTIFACT_NAME }}
-                  path: .
 
               
